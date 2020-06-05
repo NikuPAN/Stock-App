@@ -153,6 +153,7 @@ export default function StocksScreen({route}) {
               <Text style={styles.footertext_value}>{info.volumes}</Text>
             </View>
             <View style={styles.textbox}>
+
             </View>
           </View>
         </View>
@@ -261,8 +262,9 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginRight: scaleSize(10),
-    borderBottomWidth: 0.5,
+    //marginRight: scaleSize(10),
+    borderTopWidth: scaleSize(0.5),
+    //borderBottomWidth: scaleSize(0.5),
     borderColor: 'grey'
   },
   footer_title: {

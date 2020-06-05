@@ -78,6 +78,7 @@ function DisplaySearchRes({data, search}){
   
   return (
     <ScrollView style={styles.stockinfo}>
+      {/* Data is being filtered using the searchText changed by input text in the SearchBar */}
       {data.filter(x => x.symbol.includes(search.toUpperCase()) || x.name.toLowerCase().includes(search.toLowerCase())).map((filtered, i) => (
         <TouchableWithoutFeedback key={i} onPress={() => addToWatchlist(filtered.symbol)} >
           <ListItem 
