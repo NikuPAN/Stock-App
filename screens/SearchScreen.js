@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback, Keyboard /* include other react native components here as needed */ } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity, Keyboard /* include other react native components here as needed */ } from 'react-native';
 import { useStocksContext } from '../contexts/StocksContext';
 import { scaleSize } from '../constants/Layout';
 // import { Ionicons } from '@expo/vector-icons';
@@ -81,7 +81,7 @@ function DisplaySearchRes({data, search}) {
     <ScrollView>
       {/* Data is being filtered using the searchText changed by input text in the SearchBar */}
       {data.filter(x => x.symbol.includes(search.toUpperCase()) || x.name.toLowerCase().includes(search.toLowerCase())).map((filtered, i) => (
-        <TouchableWithoutFeedback key={i} onPress={() => addToWatchlist(filtered.symbol)} >
+        <TouchableOpacity key={i} onPress={() => addToWatchlist(filtered.symbol)} >
           {/* <ListItem 
             key={i}
             title={filtered.symbol}
@@ -94,7 +94,7 @@ function DisplaySearchRes({data, search}) {
               <Text style={styles.stock_subtitle}>{filtered.name}</Text>
             </Text>
           </View>
-        </TouchableWithoutFeedback>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity, Keyboard } from 'react-native';
 import { useStocksContext } from '../contexts/StocksContext';
 import { scaleSize } from '../constants/Layout';
 import { Text, Button, ListItem } from 'react-native-elements'
@@ -8,9 +8,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 //import { CurrentRenderContext } from '@react-navigation/native';
 
 // FixMe: implement other components and functions used in StocksScreen here (don't just put all the JSX in StocksScreen below)
-
-
-
 
 export default function StocksScreen({route}) {
   const { ServerURL, watchList, resetWatchList } = useStocksContext();
@@ -105,16 +102,17 @@ export default function StocksScreen({route}) {
         <ScrollView>
           {stocklist.map((e) => (
 
-            <TouchableWithoutFeedback key={e.symbol} onPress={() => setInfo(e)}>
+            // <TouchableWithoutFeedback key={e.symbol} onPress={() => setInfo(e)}>
+            <TouchableOpacity key={e.symbol} onPress={() => setInfo(e)}>
+            <View style={styles.list}>
 
-              <View style={styles.list}>
-
-                <Text style={styles.symbol}>{e.symbol}</Text>
-                <Text style={styles.close}>{e.close}</Text>
-                <Text style={(e.percentage > 0 ? styles.perc_positive : styles.perc_negative)}>  {(e.percentage > 0 ? "+" : "")}{e.percentage} % </Text>
-              </View>
-
-            </TouchableWithoutFeedback>
+              <Text style={styles.symbol}>{e.symbol}</Text>
+              <Text style={styles.close}>{e.close}</Text>
+              <Text style={(e.percentage > 0 ? styles.perc_positive : styles.perc_negative)}>  {(e.percentage > 0 ? "+" : "")}{e.percentage} % </Text>
+            </View>
+            </TouchableOpacity>
+              
+            // </TouchableWithoutFeedback>
           ))}
         </ScrollView>
       </View>
@@ -207,7 +205,8 @@ const styles = StyleSheet.create({
     marginRight: scaleSize(10),
     borderBottomWidth: 0.5,
     borderColor: 'grey',
-    paddingBottom: scaleSize(10)
+    paddingBottom: scaleSize(10),
+    //backgroundColor: 'red'
   },
   symbol: {
     color: 'white',
