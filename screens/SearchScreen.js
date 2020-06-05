@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableWithoutFeedback, Keyboard /* include other react native components here as needed */ } from 'react-native';
 import { useStocksContext } from '../contexts/StocksContext';
 import { scaleSize } from '../constants/Layout';
-import { Ionicons } from '@expo/vector-icons';
-import { Text, Button, SearchBar, ListItem } from 'react-native-elements'
+// import { Ionicons } from '@expo/vector-icons';
+import { Text, SearchBar, ListItem } from 'react-native-elements'
 //import { Button } from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
-import { FontDisplay } from 'expo-font';
-import { CurrentRenderContext } from '@react-navigation/native';
+// import { FontDisplay } from 'expo-font';
+// import { CurrentRenderContext } from '@react-navigation/native';
 
 // FixMe: implement other components and functions used in SearchScreen here (don't just put all the JSX in SearchScreen below)
 
@@ -73,9 +73,10 @@ export default function SearchScreen({ navigation }) {
   )
 }
 
-function DisplaySearchRes({data, search}){
+function DisplaySearchRes({data, search}) {
+
   const { ServerURL, addToWatchlist } = useStocksContext();
-  
+
   return (
     <ScrollView style={styles.stockinfo}>
       {/* Data is being filtered using the searchText changed by input text in the SearchBar */}

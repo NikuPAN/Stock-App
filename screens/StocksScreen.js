@@ -120,36 +120,38 @@ export default function StocksScreen({route}) {
       </View>
       { /* Check whether info is available to decide the below tab to deplay or not */ }
       {(info !== "" ? (
-        <View style={styles.stock}>
+        <TouchableWithoutFeedback onLongPress={() => setInfo("")}>
+          <View style={styles.stock} >
           <Text style={styles.footer_title}>
             <Text style={styles.name}>{info.name}</Text>
           </Text>
-
+          {/* This Line showing Open and High Price Information */}
           <View style={styles.info_row}>
             <View style={styles.textbox}>
               <Text style={styles.footertext}>Open</Text>
               <Text style={styles.footertext_value}>{info.open}</Text>
             </View>
             <View style={styles.textbox}>
-              <Text style={styles.footertext}>Close</Text>
-              <Text style={styles.footertext_value}>{info.close}</Text>
-            </View>
-          </View>
-
-          <View style={styles.info_row}>
-            <View style={styles.textbox}>
               <Text style={styles.footertext}>High</Text>
               <Text style={styles.footertext_value}>{info.high}</Text>
             </View>
+          </View>
+          {/* This Line showing Close and Low Price Information */}
+          <View style={styles.info_row}>
+            <View style={styles.textbox}>
+              <Text style={styles.footertext}>Close</Text>
+              <Text style={styles.footertext_value}>{info.close}</Text>
+            </View>
+            
             <View style={styles.textbox}>
               <Text style={styles.footertext}>Low</Text>
               <Text style={styles.footertext_value}>{info.low}</Text>
             </View>
           </View>
-
+          {/* This Line showing Volume Information */}
           <View style={styles.info_row}>
             <View style={styles.textbox}>
-              <Text style={styles.footertext}>Volumes</Text>
+              <Text style={styles.footertext}>Volume</Text>
               <Text style={styles.footertext_value}>{info.volumes}</Text>
             </View>
             <View style={styles.textbox}>
@@ -157,6 +159,7 @@ export default function StocksScreen({route}) {
             </View>
           </View>
         </View>
+        </TouchableWithoutFeedback>
       ) : (
         null
       ))}

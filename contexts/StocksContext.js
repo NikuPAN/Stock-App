@@ -36,6 +36,7 @@ export const useStocksContext = () => {
       setState(prevState=>([...prevState, newSymbol]));
       alert(`Sucessfully added ${newSymbol} to your watch list!`);
     }
+    //navigation.navigate('Stocks');
     AsyncStorage.setItem('watchList', JSON.stringify(state));
   }
 
