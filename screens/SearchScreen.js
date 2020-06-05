@@ -78,16 +78,22 @@ function DisplaySearchRes({data, search}) {
   const { ServerURL, addToWatchlist } = useStocksContext();
 
   return (
-    <ScrollView style={styles.stockinfo}>
+    <ScrollView>
       {/* Data is being filtered using the searchText changed by input text in the SearchBar */}
       {data.filter(x => x.symbol.includes(search.toUpperCase()) || x.name.toLowerCase().includes(search.toLowerCase())).map((filtered, i) => (
         <TouchableWithoutFeedback key={i} onPress={() => addToWatchlist(filtered.symbol)} >
-          <ListItem 
+          {/* <ListItem 
             key={i}
             title={filtered.symbol}
             subtitle={filtered.name}
             bottomDivider
-          />
+          /> */}
+          <View style={styles.list}>
+            <Text style={styles.stock_title}>
+              {filtered.symbol}{'\n'}
+              <Text style={styles.stock_subtitle}>{filtered.name}</Text>
+            </Text>
+          </View>
         </TouchableWithoutFeedback>
       ))}
     </ScrollView>
@@ -102,14 +108,32 @@ const styles = StyleSheet.create({
   },
   nowloading: {
     color:'grey', 
-    fontSize:scaleSize(20)
+    fontSize: scaleSize(20)
   },
   error: {
     color:'red', 
+    fontSize: scaleSize(20)
+  },
+  list: {
+    display: 'flex',
+    flexDirection: 'row',
+    //justifyContent: 'space-between',
+    //margin: scaleSize(10),
+    marginTop: scaleSize(10),
+    marginLeft: scaleSize(10),
+    marginRight: scaleSize(10),
+    borderBottomWidth: 0.5,
+    borderColor: 'grey',
+    paddingBottom: scaleSize(10)
+  },
+  stock_title: {
+    color:'white',
+    fontWeight: 'bold',
     fontSize:scaleSize(20)
   },
-  stockinfo: {
-    color:'#FFFFFF',
-    backgroundColor: 'grey'
-  }
+  stock_subtitle: {
+    color:'white',
+    fontWeight: 'normal',
+    fontSize:scaleSize(16)
+  },
 });
